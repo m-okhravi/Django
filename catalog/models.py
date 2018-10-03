@@ -2,6 +2,10 @@ from django.db import models
 import uuid # Required for unique book instances
 from django.urls import reverse # Used to generate URLs by reversing the URL patterns
 
+class Genre(models.Model):
+    '''model representing a book genre(e.g sience fiction , drum)'''
+    name = models.CharField(max_length=200 , help_text='Enter a book gener')
+
 class Book(models.Model):
     """Model representing a book (but not a specific copy of a book)."""
     title = models.CharField(max_length=200)
@@ -66,12 +70,10 @@ class Author(models.Model):
 class Meta:
         ordering = ['last_name', 'first_name']
 
-     def get_absolute_url(self):
-         """Returns the url to access a particular author instance."""
-         return reverse('author-detail', args=[str(self.id)])
+     # def get_absolute_url(self):
+     #     """Returns the url to access a particular author instance."""
+     #     return reverse('author-detail', args=[str(self.id)])
 
-     def __str__(self):
-        """String for representing the Model object."""
-        return f'{self.last_name}, {self.first_name}'
-class Gener(models.model):
-    name = models.CharField(max_length=200 , help_text='Enter a book gener')
+     # def __str__(self):
+     #    """String for representing the Model object."""
+     #    return f'{self.last_name}, {self.first_name}'
